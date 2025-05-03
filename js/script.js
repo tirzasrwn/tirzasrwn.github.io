@@ -1,80 +1,105 @@
-// even pada saat link di klik
-$('.page-scroll').on('click', function(e){
-    // console.log('ok');
-    // ambil isi href
-    var tujuan = $(this).attr('href');
-    // console.log(tujuan);
-    //tangkap elemen yang bersangkutan
-    var elemenTujuan = $(tujuan);
-    // console.log(elemenTujuan);
-    // console.log(elemenTujuan.offset().top);
-    var long = $('html').scrollTop();
-    // console.log(long);
-    // console.log($('head').scrollTop());
-    // pindahkan scroll
-    $('html').animate({
-        scrollTop: elemenTujuan.offset().top - 60
-    }, 500, 'easeInOutExpo');
-    e.preventDefault();
+// Smooth scrolling for page links
+$(".page-scroll").on("click", function (e) {
+  e.preventDefault(); // Prevent default anchor click behavior
+  var targetId = $(this).attr("href"); // Get the href attribute
+  var targetElement = $(targetId); // Select the target element
+  var offset = 60; // Offset for the scroll position
+
+  // Animate the scroll to the target element
+  $("html").animate(
+    {
+      scrollTop: targetElement.offset().top - offset,
+    },
+    500,
+    "easeInOutExpo",
+  );
 });
 
-// add typing animation
-// made by vipul mirajkar thevipulm.appspot.com
-var TxtType = function (el, toRotate, period) {
-    this.toRotate = toRotate;
-    this.el = el;
-    this.loopNum = 0;
+// Typing animation class
+class TypingAnimation {
+  constructor(element, phrases, period) {
+    this.phrases = phrases;
+    this.element = element;
+    this.loopIndex = 0;
     this.period = parseInt(period, 10) || 2000;
-    this.txt = '';
-    this.tick();
+    this.currentText = "";
     this.isDeleting = false;
-};
+    this.startTyping();
+  }
 
-TxtType.prototype.tick = function () {
-    var i = this.loopNum % this.toRotate.length;
-    var fullTxt = this.toRotate[i];
+  startTyping() {
+    const currentPhrase = this.phrases[this.loopIndex % this.phrases.length];
 
     if (this.isDeleting) {
-        this.txt = fullTxt.substring(0, this.txt.length - 1);
+      this.currentText = currentPhrase.substring(
+        0,
+        this.currentText.length - 1,
+      );
     } else {
-        this.txt = fullTxt.substring(0, this.txt.length + 1);
+      this.currentText = currentPhrase.substring(
+        0,
+        this.currentText.length + 1,
+      );
     }
 
-    this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+    this.element.innerHTML = `<span class="wrap">${this.currentText}</span>`;
 
-    var that = this;
-    var delta = 200 - Math.random() * 100;
+    let typingSpeed = 200 - Math.random() * 100;
 
     if (this.isDeleting) {
-        delta /= 2;
+      typingSpeed /= 2; // Speed up when deleting
     }
 
-    if (!this.isDeleting && this.txt === fullTxt) {
-        delta = this.period;
-        this.isDeleting = true;
-    } else if (this.isDeleting && this.txt === '') {
-        this.isDeleting = false;
-        this.loopNum++;
-        delta = 500;
+    if (!this.isDeleting && this.currentText === currentPhrase) {
+      typingSpeed = this.period; // Pause at the end of the phrase
+      this.isDeleting = true;
+    } else if (this.isDeleting && this.currentText === "") {
+      this.isDeleting = false;
+      this.loopIndex++;
+      typingSpeed = 500; // Pause before starting the next phrase
     }
 
-    setTimeout(function () {
-        that.tick();
-    }, delta);
-};
+    setTimeout(() => this.startTyping(), typingSpeed);
+  }
+}
 
+// Initialize typing animation on page load
 window.onload = function () {
-    var elements = document.getElementsByClassName('typewrite');
-    for (var i = 0; i < elements.length; i++) {
-        var toRotate = elements[i].getAttribute('data-type');
-        var period = elements[i].getAttribute('data-period');
-        if (toRotate) {
-            new TxtType(elements[i], JSON.parse(toRotate), period);
-        }
+  const elements = document.getElementsByClassName("typewrite");
+  for (let element of elements) {
+    const phrases = JSON.parse(element.getAttribute("data-type"));
+    const period = element.getAttribute("data-period");
+    if (phrases) {
+      new TypingAnimation(element, phrases, period);
     }
-    // INJECT CSS
-    var css = document.createElement("style");
-    css.type = "text/css";
-    css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
-    document.body.appendChild(css);
+  }
+
+  // Inject CSS for typing effect
+  const style = document.createElement("style");
+  style.type = "text/css";
+  style.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff }";
+  document.body.appendChild(style);
 };
+
+// Theme toggle functionality
+const themeToggleButton = document.querySelector(".theme-toggle");
+const bodyElement = document.body;
+
+// Check local storage for theme preference
+const savedTheme = localStorage.getItem("theme") || "light";
+if (savedTheme === "dark") {
+  bodyElement.classList.add("dark-theme");
+  themeToggleButton.innerHTML = '<i class="bi bi-sun"></i>';
+}
+
+// Toggle theme on button click
+themeToggleButton.addEventListener("click", () => {
+  bodyElement.classList.toggle("dark-theme");
+  if (bodyElement.classList.contains("dark-theme")) {
+    localStorage.setItem("theme", "dark");
+    themeToggleButton.innerHTML = '<i class="bi bi-sun"></i>';
+  } else {
+    localStorage.setItem("theme", "light");
+    themeToggleButton.innerHTML = '<i class="bi bi-moon-stars"></i>';
+  }
+});

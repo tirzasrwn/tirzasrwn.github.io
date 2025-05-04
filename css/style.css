@@ -214,3 +214,11 @@ a {
   background-color: var(--mantle);
   color: var(--subtext0);
 }
+
+.dark-theme .nav-link {
+  color: var(--lavender);
+}
+
+.dark-theme .navbar-brand {
+  color: var(--lavender);
+}

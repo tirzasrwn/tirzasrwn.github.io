@@ -1,5 +1,5 @@
 :root {
-  /* Light theme colors */
+  /* Light theme palette */
   --rosewater: #dc8a78;
   --flamingo: #dd7878;
   --pink: #ea76cb;
@@ -36,13 +36,12 @@
   --jumbotron-bg: var(--mantle);
   --brand-color: var(--text);
 
-  /* Add font family */
+  /* Fonts */
   --font-mono: "Fira Code", monospace;
   --font-sans: system-ui, -apple-system, sans-serif;
 }
 
 .dark-theme {
-  /* Dark theme colors */
   --rosewater: #f4dbd6;
   --flamingo: #f0c6c6;
   --pink: #f5bde6;
@@ -70,7 +69,6 @@
   --mantle: #1e2030;
   --crust: #181926;
 
-  /* Theme variables */
   --bg-color: var(--base);
   --text-color: var(--text);
   --navbar-bg: var(--mantle);
@@ -80,70 +78,49 @@
   --brand-color: var(--text);
 }
 
+/* Typography */
+body,
+code,
+pre,
+.code-font,
+.card-title,
+.badge {
+  font-family: var(--font-mono);
+}
+
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
-  font-family: var(--font-sans);
 }
 
+/* Navbar */
 .navbar {
-  background-color: var(--navbar-bg) !important;
+  background-color: var(--navbar-bg);
   border-bottom: 1px solid var(--surface0);
 }
 
 .nav-link {
-  color: var(--nav-link-color) !important;
+  color: var(--nav-link-color);
 }
 
 .navbar-brand {
-  color: var(--brand-color) !important;
+  color: var(--brand-color);
 }
 
+/* Jumbotron & Cards */
 .bg-light {
-  background-color: var(--jumbotron-bg) !important;
+  background-color: var(--jumbotron-bg);
 }
 
-a {
-  color: var(--link-color);
-}
-
-.btn-outline-primary {
-  --bs-btn-color: var(--blue);
-  --bs-btn-border-color: var(--blue);
-  --bs-btn-hover-bg: var(--blue);
-  --bs-btn-hover-border-color: var(--blue);
-}
-
-.dark-theme .navbar-toggler-icon {
-  background-image: url("data:image/svg+html,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(202, 211, 245, 0.75)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-}
-
-/* Light theme toggler icon */
-.navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.55)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-}
-
-/* Dark theme toggler icon */
-.dark-theme .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(202, 211, 245, 0.75)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-}
-
-/* Dark theme toggler border */
-.dark-theme .navbar-toggler {
-  border-color: rgba(202, 211, 245, 0.1);
-}
-
-/* Apply Fira Code to specific elements */
-code,
-pre,
-.code-font {
-  font-family: var(--font-mono);
-  font-variant-ligatures: common-ligatures;
-}
-
-/* Optional: Apply to entire document */
-body {
-  font-family: var(--font-mono);
+.jumbotron-bg {
+  background: linear-gradient(
+    135deg,
+    var(--lavender),
+    var(--surface1),
+    var(--surface0),
+    var(--blue)
+  );
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .theme-card {
@@ -159,63 +136,81 @@ body {
   box-shadow: 0 8px 15px var(--overlay1);
 }
 
+/* Typography tweaks */
 .card-title {
-  font-family: "Fira Code", monospace;
   font-weight: 600;
   letter-spacing: -0.5px;
 }
 
 .badge {
-  font-family: "Fira Code", monospace;
   font-weight: 500;
   border-radius: 8px;
   padding: 0.5em 0.8em;
 }
 
-.jumbotron-bg {
-  background: linear-gradient(
-    135deg,
-    var(--lavender),
-    var(--surface1),
-    var(--surface0),
-    var(--blue)
-  );
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+/* Links */
+a {
+  color: var(--link-color);
+}
+
+/* Buttons */
+.btn-outline-primary {
+  --bs-btn-color: var(--blue);
+  --bs-btn-border-color: var(--blue);
+  --bs-btn-hover-bg: var(--blue);
+  --bs-btn-hover-border-color: var(--blue);
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-success {
+  color: var(--base);
 }
 
 .btn-primary {
-  background-color: var(--blue); /* Your custom primary color */
-  border-color: var(--blue); /* Border color */
-  color: var(--base);
+  background-color: var(--blue);
+  border-color: var(--blue);
 }
 
 .btn-primary:hover {
-  background-color: var(--sapphire); /* Hover color */
-  border-color: var(--sapphire); /* Hover border color */
-  color: var(--base);
+  background-color: var(--sapphire);
+  border-color: var(--sapphire);
 }
 
 .btn-secondary {
-  background-color: var(--peach); /* Your custom secondary color */
-  border-color: var(--peach); /* Border color */
-  color: var(--base);
+  background-color: var(--peach);
+  border-color: var(--peach);
 }
 
 .btn-secondary:hover {
-  background-color: var(--yellow); /* Hover color */
-  border-color: var(--yellow); /* Hover border color */
-  color: var(--base);
+  background-color: var(--yellow);
+  border-color: var(--yellow);
 }
 
 .btn-success {
-  background-color: var(--green); /* Your custom success color */
-  border-color: var(--green); /* Border color */
-  color: var(--base);
+  background-color: var(--green);
+  border-color: var(--green);
 }
 
 .btn-success:hover {
-  background-color: var(--teal); /* Hover color */
-  border-color: var(--teal); /* Hover border color */
-  color: var(--base);
+  background-color: var(--teal);
+  border-color: var(--teal);
 }
 
+/* Navbar toggler icon */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.55)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.dark-theme .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(202, 211, 245, 0.75)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.dark-theme .navbar-toggler {
+  border-color: rgba(202, 211, 245, 0.1);
+}
+
+.footer {
+  background-color: var(--mantle);
+  color: var(--subtext0);
+}

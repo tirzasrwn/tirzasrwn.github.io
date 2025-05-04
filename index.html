@@ -2,10 +2,7 @@
 <html lang="en" id="home">
   <head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Lorem Ipsum Portfolio" />
     <meta name="author" content="Lorem Ipsum" />
 
@@ -37,7 +34,10 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
     />
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/emoji.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/emoji-js/3.8.1/emoji.css"
+    />
 
     <title>Lorem Ipsum - Portfolio</title>
   </head>
@@ -55,11 +55,11 @@
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#navbarTogglerDemo02"
+          data-bs-target="#navbarToggler"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <div class="collapse navbar-collapse" id="navbarToggler">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link page-scroll" href="#about">About Me</a>
@@ -71,37 +71,24 @@
               <a class="nav-link page-scroll" href="#project">Latest Project</a>
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <div
-              class="btn-group btn-group-sm btn-block"
-              role="group"
-              aria-label="Basic example"
+          <div class="btn-group btn-group-sm" role="group">
+            <a class="btn btn-primary" href="#" target="_blank">My LinkedIn</a>
+            <a class="btn btn-secondary" href="myCv.pdf" target="_blank"
+              >Get My CV</a
             >
-              <a class="btn btn-primary" href="#" role="button" target="_blank"
-                >My LinkedIn</a
-              >
-              <a
-                class="btn btn-secondary"
-                href="myCv.pdf"
-                role="button"
-                target="_blank"
-                >Get My Curriculum Vitae</a
-              >
-              <a
-                class="btn btn-success"
-                href="mailto:example@example.com"
-                role="button"
-                target="_blank"
-                >Hire Me</a
-              >
-            </div>
-          </form>
+            <a
+              class="btn btn-success"
+              href="mailto:example@example.com"
+              target="_blank"
+              >Hire Me</a
+            >
+          </div>
         </div>
       </div>
     </nav>
 
-    <div class="p-5 jumbotron-bg">
-      <div class="container text-center">
+    <div class="p-5 jumbotron-bg text-center">
+      <div class="container">
         <img
           src="img/myPicture.png"
           class="rounded-circle mt-5 img-fluid"
@@ -133,21 +120,15 @@
           </div>
           <div class="col-md-9">
             <div
-              class="card-content"
-              style="border-left: 3px solid var(--mauve); padding-left: 1.5rem"
+              class="card-content border-start ps-3"
+              style="border-color: var(--mauve)"
             >
               <p class="mb-0" style="color: var(--text)">
                 Hello, I am Lorem Ipsum. I am passionate about design,
                 development, and creating solutions.
-                <span
-                  style="
-                    display: block;
-                    margin-top: 1rem;
-                    color: var(--subtext1);
-                  "
+                <span class="d-block mt-3" style="color: var(--subtext1)"
+                  >Areas of interest include:</span
                 >
-                  Areas of interest include:
-                </span>
               </p>
               <div class="mt-2">
                 <span
@@ -186,8 +167,8 @@
           </div>
           <div class="col-md-9">
             <div
-              class="card-content"
-              style="border-left: 3px solid var(--teal); padding-left: 1.5rem"
+              class="card-content border-start ps-3"
+              style="border-color: var(--teal)"
             >
               <p class="mb-1" style="color: var(--text)">
                 Currently based in<br />
@@ -232,15 +213,14 @@
       </div>
     </div>
 
-    <footer class="bg-light">
+    <footer>
       <div class="container">
-        <div class="row text-center pt-2 pb-1">
+        <div class="row text-center py-2">
           <div class="col">
             <p>
               Made by Lorem Ipsum with extra
               <span class="ec-two-hearts"></span> |
-              <span class="ec-copyright"></span>
-              2025.
+              <span class="ec-copyright"></span> 2025.
             </p>
           </div>
         </div>
@@ -253,4 +233,3 @@
     <script src="js/script.js"></script>
   </body>
 </html>
-
